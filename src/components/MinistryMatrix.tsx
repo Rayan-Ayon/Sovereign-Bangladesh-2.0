@@ -27,7 +27,6 @@ import {
   Search,
   ArrowRight,
   Filter,
-  TrendingUp,
   AlertCircle
 } from 'lucide-react';
 import { Ministry } from '../lib/types';
@@ -41,7 +40,6 @@ interface MinistryMatrixProps {
   selectedMinistrySlug?: string | null;
 }
 
-// Icon mapper
 const ICON_MAP: Record<string, React.ElementType> = {
   Ship,
   GraduationCap,
@@ -105,49 +103,50 @@ export const MinistryMatrix: React.FC<MinistryMatrixProps> = ({
   }, [ministries, activeCategory, searchQuery]);
 
   return (
-    <section className="py-12 bg-[#0B131B] border-b border-slate-800" id="ministry-matrix">
+    <section className="py-12 bg-[#070D12] border-b-2 border-slate-800" id="ministry-matrix">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-2 h-2 rounded-full bg-[#B8860B]" />
+            <div className="flex items-center gap-2 mb-1.5">
+              <span className="w-2 h-2 bg-[#B8860B]" />
               <span className="text-xs font-mono uppercase tracking-wider text-[#B8860B] font-bold">
                 24 Sovereign Domains • $1.49T Total Modelled Capacity
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white font-sans">
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-sans">
               {t.matrix_heading}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl">
+            <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl leading-relaxed">
               {t.matrix_subheading}
             </p>
           </div>
 
-          {/* Search Box */}
+          {/* Brutalist Search Box */}
           <div className="relative max-w-xs w-full">
-            <Search className="w-4 h-4 text-slate-500 absolute left-3 top-3 pointer-events-none" />
+            <Search className="w-4 h-4 text-slate-500 absolute left-3 top-2.5 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={isBn ? "মন্ত্রণালয় বা খাত খুঁজুন..." : "Filter ministries or keywords..."}
-              className="w-full bg-[#152232] border border-slate-700 rounded-lg pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-[#006A4E]"
+              className="w-full bg-[#0D1620] border-2 border-slate-800 rounded-sm pl-9 pr-3 py-2 text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-[#006A4E] shadow-[2px_2px_0px_0px_#000]"
             />
           </div>
         </div>
 
-        {/* Category Filter Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-6 no-scrollbar">
+        {/* Neo-brutalist Category Tabs (No floaty pills) */}
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-3 mb-6 no-scrollbar">
           <Filter className="w-3.5 h-3.5 text-slate-500 shrink-0 mr-1" />
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition ${
+              className={`px-3 py-1.5 rounded-sm text-xs font-mono font-bold whitespace-nowrap transition border ${
                 activeCategory === cat.id
-                  ? 'bg-[#006A4E] text-white shadow-sm ring-1 ring-[#006A4E]'
-                  : 'bg-[#152232] text-slate-400 hover:text-white border border-slate-800 hover:border-slate-700'
+                  ? 'bg-[#006A4E] text-white border-[#34D399] shadow-[2px_2px_0px_0px_#000]'
+                  : 'bg-[#0D1620] text-slate-400 hover:text-white border-slate-800 hover:border-slate-700'
               }`}
             >
               {cat.label}
@@ -156,7 +155,7 @@ export const MinistryMatrix: React.FC<MinistryMatrixProps> = ({
           {selectedMinistrySlug && (
             <button
               onClick={() => onSelectMinistry('')}
-              className="px-2.5 py-1 rounded text-[11px] font-mono text-[#F42A41] hover:bg-red-950/40 border border-red-900/60 ml-auto whitespace-nowrap"
+              className="px-2.5 py-1 rounded-sm text-[11px] font-mono text-[#F42A41] hover:bg-red-950/40 border border-red-900/60 ml-auto whitespace-nowrap"
             >
               Reset Sector Filter
             </button>
@@ -173,19 +172,19 @@ export const MinistryMatrix: React.FC<MinistryMatrixProps> = ({
               <div
                 key={ministry.id}
                 onClick={() => onSelectMinistry(isSelected ? '' : ministry.slug)}
-                className={`group cursor-pointer rounded-xl p-4 transition-all duration-200 border flex flex-col justify-between ${
+                className={`group cursor-pointer rounded-sm p-4 transition-all duration-150 border-2 flex flex-col justify-between ${
                   isSelected
-                    ? 'bg-[#152232] border-[#006A4E] ring-2 ring-[#006A4E]/50 shadow-lg shadow-[#006A4E]/20'
-                    : 'bg-[#152232]/80 hover:bg-[#152232] border-slate-800 hover:border-slate-700 hover:shadow-md'
+                    ? 'bg-[#0D1620] border-[#006A4E] shadow-[4px_4px_0px_0px_#006A4E]'
+                    : 'bg-[#0D1620] hover:bg-[#121c28] border-slate-800 hover:border-slate-700 shadow-[3px_3px_0px_0px_#000]'
                 }`}
               >
                 <div>
                   {/* Top Row: Icon + Category Badge */}
                   <div className="flex items-start justify-between gap-2 mb-3">
-                    <div className="w-9 h-9 rounded-lg bg-[#0B131B] border border-slate-700/80 flex items-center justify-center text-[#34D399] group-hover:border-[#006A4E] transition">
+                    <div className="w-8 h-8 rounded-sm bg-[#070D12] border border-slate-800 flex items-center justify-center text-[#34D399] group-hover:border-[#006A4E] transition">
                       <IconComponent className="w-4 h-4 text-[#34D399]" />
                     </div>
-                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700/60">
+                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-none bg-[#070D12] text-slate-400 border border-slate-800 uppercase">
                       {ministry.category}
                     </span>
                   </div>
@@ -204,7 +203,7 @@ export const MinistryMatrix: React.FC<MinistryMatrixProps> = ({
                 {/* Footer Metrics */}
                 <div className="mt-4 pt-3 border-t border-slate-800/80 space-y-2">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-slate-400 text-[11px]">{t.stat_gdp_impact}:</span>
+                    <span className="text-slate-400 text-[11px] font-mono">{t.stat_gdp_impact}:</span>
                     <span className="font-mono font-bold text-[#B8860B]">
                       {formatDollar(ministry.target_10y_gdp_impact_usd)}
                     </span>
@@ -215,7 +214,7 @@ export const MinistryMatrix: React.FC<MinistryMatrixProps> = ({
                       <AlertCircle className="w-3 h-3 text-[#F42A41]" />
                       {isBn ? `${formatNumberBn(ministry.active_bottlenecks_count)} জট` : `${ministry.active_bottlenecks_count} Bottlenecks`}
                     </span>
-                    <span className="flex items-center gap-1 text-[#34D399]">
+                    <span className="flex items-center gap-1 text-[#34D399] font-bold">
                       <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition" />
                       {isBn ? `${formatNumberBn(ministry.open_prs_count)} স্পেক` : `${ministry.open_prs_count} PRs`}
                     </span>

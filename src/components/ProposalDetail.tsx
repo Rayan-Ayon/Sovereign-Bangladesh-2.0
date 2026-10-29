@@ -195,9 +195,9 @@ export const ProposalDetail: React.FC<ProposalDetailProps> = ({
         <div className="lg:col-span-7 space-y-6">
           
           {/* Header Block */}
-          <div className="bg-[#152232] border border-slate-800 rounded-xl p-6 shadow-xl relative overflow-hidden">
+          <div className="bg-[#0D1620] border-2 border-slate-800 rounded-sm p-6 shadow-[4px_4px_0px_0px_#000] relative overflow-hidden">
             <div className="flex flex-wrap items-center gap-2 mb-3">
-              <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-[#34D399]">
+              <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-none bg-[#070D12] border border-slate-800 text-[#34D399]">
                 {isBn ? ministry?.name_bn : ministry?.name_en}
               </span>
 
@@ -322,14 +322,14 @@ export const ProposalDetail: React.FC<ProposalDetailProps> = ({
           <div className="space-y-4">
             
             {/* 1. Existing Bottleneck Accordion */}
-            <div className="bg-[#152232] border border-slate-800 rounded-xl overflow-hidden shadow-lg">
+            <div className="bg-[#0D1620] border-2 border-slate-800 rounded-sm overflow-hidden shadow-[3px_3px_0px_0px_#000]">
               <button
                 type="button"
                 onClick={() => setOpenSections((prev) => ({ ...prev, bottleneck: !prev.bottleneck }))}
                 className="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-slate-800/40 transition"
               >
                 <div className="flex items-center gap-2.5">
-                  <div className="w-2 h-2 rounded-full bg-[#F42A41]" />
+                  <div className="w-2 h-2 rounded-none bg-[#F42A41]" />
                   <span className="font-mono text-xs uppercase tracking-wider text-slate-400 font-bold">
                     Section 01
                   </span>
@@ -340,21 +340,21 @@ export const ProposalDetail: React.FC<ProposalDetailProps> = ({
                 {openSections.bottleneck ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
               </button>
               {openSections.bottleneck && (
-                <div className="px-5 pb-5 text-xs sm:text-sm text-slate-200 leading-relaxed border-t border-slate-800/80 pt-3">
+                <div className="px-5 pb-5 text-xs sm:text-sm text-slate-200 leading-relaxed border-t border-slate-800 pt-3">
                   <p className="whitespace-pre-line">{proposal.existing_bottleneck}</p>
                 </div>
               )}
             </div>
 
             {/* 2. Hidden Operational Ground Truth Accordion */}
-            <div className="bg-[#152232] border border-slate-800 rounded-xl overflow-hidden shadow-lg">
+            <div className="bg-[#0D1620] border-2 border-slate-800 rounded-sm overflow-hidden shadow-[3px_3px_0px_0px_#000]">
               <button
                 type="button"
                 onClick={() => setOpenSections((prev) => ({ ...prev, rootCause: !prev.rootCause }))}
                 className="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-slate-800/40 transition"
               >
                 <div className="flex items-center gap-2.5">
-                  <div className="w-2 h-2 rounded-full bg-[#B8860B]" />
+                  <div className="w-2 h-2 rounded-none bg-[#B8860B]" />
                   <span className="font-mono text-xs uppercase tracking-wider text-slate-400 font-bold">
                     Section 02
                   </span>
@@ -365,21 +365,21 @@ export const ProposalDetail: React.FC<ProposalDetailProps> = ({
                 {openSections.rootCause ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
               </button>
               {openSections.rootCause && (
-                <div className="px-5 pb-5 text-xs sm:text-sm text-slate-200 leading-relaxed border-t border-slate-800/80 pt-3">
+                <div className="px-5 pb-5 text-xs sm:text-sm text-slate-200 leading-relaxed border-t border-slate-800 pt-3">
                   <p className="whitespace-pre-line">{proposal.hidden_root_cause}</p>
                 </div>
               )}
             </div>
 
             {/* 3. Physics-Limit Engineering Solution (Left border-4 in Sovereign Green) */}
-            <div className="bg-[#152232] border border-slate-800 rounded-xl overflow-hidden shadow-lg border-l-4 border-l-[#006A4E]">
+            <div className="bg-[#0D1620] border-2 border-slate-800 rounded-sm overflow-hidden shadow-[3px_3px_0px_0px_#000] border-l-4 border-l-[#006A4E]">
               <button
                 type="button"
                 onClick={() => setOpenSections((prev) => ({ ...prev, physicsFix: !prev.physicsFix }))}
                 className="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-slate-800/40 transition"
               >
                 <div className="flex items-center gap-2.5">
-                  <div className="w-2 h-2 rounded-full bg-[#34D399]" />
+                  <div className="w-2 h-2 rounded-none bg-[#34D399]" />
                   <span className="font-mono text-xs uppercase tracking-wider text-[#34D399] font-bold">
                     Section 03 • First-Principles Fix
                   </span>
@@ -390,10 +390,10 @@ export const ProposalDetail: React.FC<ProposalDetailProps> = ({
                 {openSections.physicsFix ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
               </button>
               {openSections.physicsFix && (
-                <div className="px-5 pb-5 text-xs sm:text-sm text-slate-200 leading-relaxed border-t border-slate-800/80 pt-3">
+                <div className="px-5 pb-5 text-xs sm:text-sm text-slate-200 leading-relaxed border-t border-slate-800 pt-3">
                   <p className="whitespace-pre-line">{proposal.physics_limit_fix}</p>
                   
-                  <div className="mt-4 p-3 bg-[#0B131B] border border-slate-800 rounded-lg flex items-center justify-between text-xs font-mono">
+                  <div className="mt-4 p-3 bg-[#070D12] border border-slate-800 rounded-sm flex items-center justify-between text-xs font-mono">
                     <span className="text-slate-400">Civil & Technical Engineering Ceiling:</span>
                     <span className="text-[#34D399] font-bold">
                       {isBn ? `${formatNumberBn(proposal.estimated_days_to_execute)} ক্যালেন্ডার দিন` : `${proposal.estimated_days_to_execute} Calendar Days`}
@@ -412,7 +412,7 @@ export const ProposalDetail: React.FC<ProposalDetailProps> = ({
         <div className="lg:col-span-5 space-y-6">
           
           {/* Consensus Meter Card */}
-          <div className="bg-[#152232] border border-slate-800 rounded-xl p-5 shadow-xl">
+          <div className="bg-[#0D1620] border-2 border-slate-800 rounded-sm p-5 shadow-[4px_4px_0px_0px_#000]">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-[#B8860B]" />
@@ -538,7 +538,7 @@ export const ProposalDetail: React.FC<ProposalDetailProps> = ({
                 return (
                   <div
                     key={comment.id}
-                    className="bg-[#152232] border border-slate-800 rounded-xl p-4 shadow-md space-y-2.5"
+                    className="bg-[#0D1620] border border-slate-800 rounded-sm p-4 shadow-[2px_2px_0px_0px_#000] space-y-2.5"
                   >
                     {/* Comment Header */}
                     <div className="flex items-start justify-between gap-2">
@@ -600,7 +600,7 @@ export const ProposalDetail: React.FC<ProposalDetailProps> = ({
           </div>
 
           {/* New Stance Submission Form */}
-          <div className="bg-[#152232] border border-slate-800 rounded-xl p-5 shadow-xl">
+          <div className="bg-[#0D1620] border-2 border-slate-800 rounded-sm p-5 shadow-[4px_4px_0px_0px_#000]">
             <h4 className="text-xs font-mono uppercase tracking-wider text-slate-300 font-bold mb-3 flex items-center gap-1.5">
               <MessageSquare className="w-3.5 h-3.5 text-[#34D399]" />
               {t.post_comment_title}
@@ -612,16 +612,16 @@ export const ProposalDetail: React.FC<ProposalDetailProps> = ({
                 <label className="block text-[11px] font-mono text-slate-400 mb-1.5">
                   Select Stance <span className="text-[#F42A41]">*</span>
                 </label>
-                <div className="grid grid-cols-2 gap-1.5">
+                <div className="grid grid-cols-2 gap-2">
                   {stancePills.map((pill) => (
                     <button
                       key={pill.id}
                       type="button"
                       onClick={() => setCommentStance(pill.id)}
-                      className={`px-2.5 py-1.5 rounded-md text-xs font-mono font-medium border text-left transition ${
+                      className={`px-3 py-2 rounded-sm text-xs font-mono font-medium border-2 text-left transition ${
                         commentStance === pill.id
-                          ? `${pill.color} ring-1 ring-current font-bold`
-                          : 'bg-[#0B131B] text-slate-400 border-slate-800 hover:border-slate-700'
+                          ? `${pill.color} font-bold shadow-[2px_2px_0px_0px_#000]`
+                          : 'bg-[#070D12] text-slate-400 border-slate-800 hover:border-slate-700'
                       }`}
                     >
                       {pill.label}
@@ -637,7 +637,7 @@ export const ProposalDetail: React.FC<ProposalDetailProps> = ({
                   value={commentContent}
                   onChange={(e) => setCommentContent(e.target.value)}
                   placeholder={t.post_comment_placeholder}
-                  className="w-full bg-[#0B131B] border border-slate-700 rounded-md p-3 text-xs text-white focus:outline-none focus:ring-1 focus:ring-[#006A4E]"
+                  className="w-full bg-[#070D12] border-2 border-slate-800 rounded-sm p-3 text-xs text-white focus:outline-none focus:border-[#006A4E]"
                 />
               </div>
 
@@ -651,12 +651,12 @@ export const ProposalDetail: React.FC<ProposalDetailProps> = ({
                   value={commentEvidenceUrl}
                   onChange={(e) => setCommentEvidenceUrl(e.target.value)}
                   placeholder="https://bpdb.gov.bd/grid-specs/substation-40"
-                  className="w-full bg-[#0B131B] border border-slate-700 rounded-md px-3 py-1.5 text-xs text-white focus:outline-none focus:ring-1 focus:ring-[#006A4E]"
+                  className="w-full bg-[#070D12] border-2 border-slate-800 rounded-sm px-3 py-1.5 text-xs text-white focus:outline-none focus:border-[#006A4E]"
                 />
               </div>
 
               {commentError && (
-                <p className="text-xs text-[#F42A41] font-medium">{commentError}</p>
+                <p className="text-xs text-[#F42A41] font-mono font-medium">{commentError}</p>
               )}
 
               {/* Submit Button */}
@@ -666,7 +666,7 @@ export const ProposalDetail: React.FC<ProposalDetailProps> = ({
                 </span>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-md bg-[#006A4E] hover:bg-[#00543e] text-white text-xs font-bold transition flex items-center gap-1.5 shadow"
+                  className="px-4 py-2 rounded-sm bg-[#006A4E] hover:bg-[#00543e] text-white text-xs font-mono font-bold transition flex items-center gap-1.5 border-2 border-slate-900 shadow-[2px_2px_0px_0px_#000] cursor-pointer"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>{t.btn_post_stance}</span>

@@ -126,10 +126,10 @@ export default function App() {
   const t = I18N[currentLocale];
 
   return (
-    <div className="min-h-screen bg-[#0B131B] text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-[#070D12] text-slate-100 flex flex-col font-sans">
       {/* Top Sovereignty Banner */}
-      <div className="bg-[#006A4E] text-white text-[11px] font-mono px-4 py-1 text-center font-bold tracking-wider flex items-center justify-center gap-2">
-        <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
+      <div className="bg-[#006A4E] text-white text-[11px] font-mono px-4 py-1 text-center font-bold tracking-wider flex items-center justify-center gap-2 border-b-2 border-slate-900">
+        <span className="w-1.5 h-1.5 bg-white animate-ping" />
         <span>REPUBLIC OF BANGLADESH • SOVEREIGN CIVIC INTELLIGENCE OS 2.0</span>
       </div>
 
@@ -277,18 +277,18 @@ export default function App() {
       />
 
       {/* Sovereign Footer */}
-      <footer className="bg-[#080E14] border-t border-slate-800/80 py-8 text-xs text-slate-400">
+      <footer className="bg-[#070D12] border-t-2 border-slate-800 py-8 text-xs text-slate-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded bg-[#006A4E] text-white flex items-center justify-center font-bold text-[10px]">
+            <div className="w-5 h-5 rounded-sm bg-[#006A4E] text-white flex items-center justify-center font-bold text-[10px] border border-emerald-400 font-mono">
               ২.০
             </div>
-            <span className="font-mono text-slate-300 font-bold">
+            <span className="font-mono text-slate-300 font-bold tracking-tight">
               BANGLADESH 2.0 • Sovereign Civic-Intelligence OS
             </span>
           </div>
 
-          <div className="font-mono text-[11px] text-slate-500 text-center sm:text-right">
+          <div className="font-mono text-[11px] text-slate-400 text-center sm:text-right">
             <span>{t.footer_audit}</span>
           </div>
         </div>

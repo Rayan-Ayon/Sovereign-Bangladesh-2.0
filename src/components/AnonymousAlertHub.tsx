@@ -78,9 +78,9 @@ export const AnonymousAlertHub: React.FC<AnonymousAlertHubProps> = ({
       </div>
 
       {/* Decryption Auth Gate */}
-      <div className="bg-[#152232] border border-slate-800 rounded-xl p-6 shadow-xl mb-8">
+      <div className="bg-[#0D1620] border-2 border-slate-800 rounded-sm p-6 shadow-[4px_4px_0px_0px_#000] mb-8">
         <form onSubmit={handleUnlock} className="space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div className="flex items-center justify-between pb-3 border-b-2 border-slate-800">
             <span className="text-xs font-mono font-bold text-slate-200 flex items-center gap-2">
               <KeyRound className="w-4 h-4 text-[#34D399]" />
               Cryptographic Session Keys
@@ -100,7 +100,7 @@ export const AnonymousAlertHub: React.FC<AnonymousAlertHubProps> = ({
                 value={inputHandle}
                 onChange={(e) => setInputHandle(e.target.value)}
                 placeholder={t.inbox_handle_placeholder}
-                className="w-full bg-[#0B131B] border border-slate-700 rounded-md px-3 py-2 text-xs font-mono text-[#34D399] focus:outline-none focus:ring-1 focus:ring-[#006A4E]"
+                className="w-full bg-[#070D12] border-2 border-slate-800 rounded-sm px-3 py-2 text-xs font-mono text-[#34D399] focus:outline-none focus:border-[#006A4E]"
               />
             </div>
 
@@ -113,19 +113,19 @@ export const AnonymousAlertHub: React.FC<AnonymousAlertHubProps> = ({
                 value={inputPassphrase}
                 onChange={(e) => setInputPassphrase(e.target.value)}
                 placeholder={t.inbox_pass_placeholder}
-                className="w-full bg-[#0B131B] border border-slate-700 rounded-md px-3 py-2 text-xs font-mono text-white focus:outline-none focus:ring-1 focus:ring-[#006A4E]"
+                className="w-full bg-[#070D12] border-2 border-slate-800 rounded-sm px-3 py-2 text-xs font-mono text-white focus:outline-none focus:border-[#006A4E]"
               />
             </div>
           </div>
 
           {authError && (
-            <p className="text-xs text-[#F42A41] font-medium">{authError}</p>
+            <p className="text-xs text-[#F42A41] font-mono font-medium">{authError}</p>
           )}
 
           <div className="flex justify-end pt-1">
             <button
               type="submit"
-              className="px-4 py-2 bg-[#006A4E] hover:bg-[#00543e] text-white text-xs font-bold rounded-md transition flex items-center gap-2 shadow"
+              className="px-4 py-2 bg-[#006A4E] hover:bg-[#00543e] text-white text-xs font-mono font-bold rounded-sm border-2 border-slate-900 transition flex items-center gap-2 shadow-[2px_2px_0px_0px_#000] cursor-pointer"
             >
               <Unlock className="w-3.5 h-3.5" />
               <span>{t.btn_unlock_inbox}</span>
@@ -138,7 +138,7 @@ export const AnonymousAlertHub: React.FC<AnonymousAlertHubProps> = ({
       {isUnlocked && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-bold text-white flex items-center gap-2">
+            <h3 className="text-sm font-bold text-white flex items-center gap-2 font-mono">
               <Bell className="w-4 h-4 text-[#34D399]" />
               <span>{t.notifications_found}</span>
             </h3>
@@ -148,20 +148,20 @@ export const AnonymousAlertHub: React.FC<AnonymousAlertHubProps> = ({
           </div>
 
           {filteredNotifs.length === 0 ? (
-            <div className="bg-[#152232]/50 border border-dashed border-slate-800 rounded-xl p-8 text-center text-xs text-slate-400">
+            <div className="bg-[#0D1620] border-2 border-dashed border-slate-800 rounded-sm p-8 text-center text-xs font-mono text-slate-400">
               {t.no_notifications}
             </div>
           ) : (
             filteredNotifs.map((notif) => (
               <div
                 key={notif.id}
-                className={`bg-[#152232] border rounded-xl p-5 shadow-lg transition-all ${
-                  notif.is_read ? 'border-slate-800 opacity-90' : 'border-[#006A4E] ring-1 ring-[#006A4E]/30'
+                className={`bg-[#0D1620] border-2 rounded-sm p-5 shadow-[3px_3px_0px_0px_#000] transition-all ${
+                  notif.is_read ? 'border-slate-800 opacity-90' : 'border-[#006A4E]'
                 }`}
               >
                 <div className="flex items-start justify-between gap-3 mb-2">
                   <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-[#006A4E]/20 border border-[#006A4E] flex items-center justify-center text-[#34D399]">
+                    <div className="w-7 h-7 rounded-sm bg-[#006A4E]/20 border border-[#006A4E] flex items-center justify-center text-[#34D399]">
                       <CheckCircle2 className="w-4 h-4" />
                     </div>
                     <div>
@@ -185,7 +185,7 @@ export const AnonymousAlertHub: React.FC<AnonymousAlertHubProps> = ({
 
                 {/* Blueprint Chapter Reference */}
                 <div className="mt-3.5 pl-9 flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
-                  <div className="p-2 rounded bg-[#0B131B] border border-slate-800 text-[11px] text-slate-400">
+                  <div className="p-2 rounded-sm bg-[#070D12] border border-slate-800 text-[11px] text-slate-400">
                     <span className="text-[#B8860B] font-bold">Ratified Spec: </span>
                     <span>{notif.blueprint_section_reference}</span>
                   </div>
@@ -193,14 +193,14 @@ export const AnonymousAlertHub: React.FC<AnonymousAlertHubProps> = ({
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => onSelectProposal(notif.proposal_id)}
-                      className="px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-mono flex items-center gap-1 transition"
+                      className="px-3 py-1.5 rounded-sm bg-[#070D12] hover:bg-slate-800 border-2 border-slate-700 text-slate-200 text-xs font-mono flex items-center gap-1 transition shadow-[1px_1px_0px_0px_#000] cursor-pointer"
                     >
                       <span>Deliberation</span>
                       <ArrowRight className="w-3 h-3" />
                     </button>
                     <button
                       onClick={onNavigateToBlueprint}
-                      className="px-3 py-1.5 rounded bg-[#006A4E]/20 hover:bg-[#006A4E]/30 border border-[#006A4E] text-[#34D399] text-xs font-mono flex items-center gap-1 transition"
+                      className="px-3 py-1.5 rounded-sm bg-[#006A4E]/20 hover:bg-[#006A4E]/30 border-2 border-[#006A4E] text-[#34D399] text-xs font-mono font-bold flex items-center gap-1 transition shadow-[1px_1px_0px_0px_#000] cursor-pointer"
                     >
                       <FileCode2 className="w-3 h-3" />
                       <span>Blueprint</span>

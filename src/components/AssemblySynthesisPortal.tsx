@@ -73,11 +73,11 @@ export const AssemblySynthesisPortal: React.FC<AssemblySynthesisPortalProps> = (
 
       {/* Success Notification Banner if commit occurred */}
       {lastCommittedSha && (
-        <div className="mb-6 p-4 rounded-xl bg-emerald-950/70 border border-emerald-600 text-emerald-200 flex items-center justify-between gap-4">
+        <div className="mb-6 p-4 rounded-sm bg-emerald-950/80 border-2 border-emerald-600 text-emerald-200 flex items-center justify-between gap-4 shadow-[3px_3px_0px_0px_#000]">
           <div className="flex items-center gap-3">
             <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
             <div>
-              <h4 className="text-xs sm:text-sm font-bold text-white">
+              <h4 className="text-xs sm:text-sm font-bold text-white font-mono uppercase tracking-wider">
                 Specification Successfully Ratified & Merged!
               </h4>
               <p className="text-xs text-emerald-300 font-mono">
@@ -87,7 +87,7 @@ export const AssemblySynthesisPortal: React.FC<AssemblySynthesisPortalProps> = (
           </div>
           <button
             onClick={() => onNavigateToBlueprint(lastCommittedSha)}
-            className="px-3.5 py-1.5 rounded bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-mono font-bold shrink-0 transition"
+            className="px-3.5 py-1.5 rounded-sm bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-mono font-bold shrink-0 transition border-2 border-emerald-500 shadow-[1px_1px_0px_0px_#000] cursor-pointer"
           >
             Inspect Commit →
           </button>
@@ -97,11 +97,11 @@ export const AssemblySynthesisPortal: React.FC<AssemblySynthesisPortalProps> = (
       {/* Grid of Eligible Proposals */}
       <div className="space-y-6">
         <div>
-          <h2 className="text-base font-bold text-white mb-1 flex items-center gap-2">
+          <h2 className="text-base font-bold text-white mb-1 flex items-center gap-2 font-mono">
             <GitPullRequest className="w-4 h-4 text-[#34D399]" />
             <span>Specifications Staged for National Ratification ({eligibleProposals.length})</span>
           </h2>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-400 font-mono">
             Clicking synthesize bundles the citizen's 4-part physics diagnosis into an immutable Markdown legislation directive.
           </p>
         </div>
@@ -114,11 +114,11 @@ export const AssemblySynthesisPortal: React.FC<AssemblySynthesisPortalProps> = (
             return (
               <div
                 key={prop.id}
-                className="bg-[#152232] border border-slate-800 hover:border-slate-700 rounded-xl p-5 shadow-lg flex flex-col justify-between space-y-4"
+                className="bg-[#0D1620] border-2 border-slate-800 hover:border-slate-700 rounded-sm p-5 shadow-[4px_4px_0px_0px_#000] flex flex-col justify-between space-y-4 transition-all"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-900 border border-slate-700 text-[#34D399]">
+                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-sm bg-[#070D12] border border-slate-700 text-[#34D399]">
                       {isBn ? ministry?.name_bn : ministry?.name_en}
                     </span>
                     <span className="text-xs font-mono text-[#B8860B] font-bold">
@@ -152,7 +152,7 @@ export const AssemblySynthesisPortal: React.FC<AssemblySynthesisPortalProps> = (
                 <div className="pt-3 border-t border-slate-800 flex items-center justify-between gap-2">
                   <button
                     onClick={() => onSelectProposal(prop.id)}
-                    className="text-xs font-mono text-slate-400 hover:text-white"
+                    className="text-xs font-mono text-slate-400 hover:text-white transition"
                   >
                     Review Deliberation ({prop.comments_count})
                   </button>
@@ -160,7 +160,7 @@ export const AssemblySynthesisPortal: React.FC<AssemblySynthesisPortalProps> = (
                   <button
                     onClick={() => handleSynthesize(prop.id)}
                     disabled={isProcessing}
-                    className="px-4 py-2 rounded-lg bg-[#006A4E] hover:bg-[#00543e] text-white text-xs font-bold font-mono transition flex items-center gap-1.5 shadow disabled:opacity-50"
+                    className="px-4 py-2 rounded-sm bg-[#006A4E] hover:bg-[#00543e] text-white text-xs font-bold font-mono transition flex items-center gap-1.5 border-2 border-slate-900 shadow-[2px_2px_0px_0px_#000] disabled:opacity-50 cursor-pointer"
                   >
                     {isProcessing ? (
                       <>
@@ -182,8 +182,8 @@ export const AssemblySynthesisPortal: React.FC<AssemblySynthesisPortalProps> = (
 
         {/* Committed Section */}
         {committedProposals.length > 0 && (
-          <div className="mt-12 pt-8 border-t border-slate-800">
-            <h2 className="text-base font-bold text-white mb-1 flex items-center gap-2">
+          <div className="mt-12 pt-8 border-t-2 border-slate-800">
+            <h2 className="text-base font-bold text-white mb-1 flex items-center gap-2 font-mono">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
               <span>Ratified Specifications Merged to OS ({committedProposals.length})</span>
             </h2>
@@ -193,7 +193,7 @@ export const AssemblySynthesisPortal: React.FC<AssemblySynthesisPortalProps> = (
                 <div
                   key={p.id}
                   onClick={() => onNavigateToBlueprint(p.git_commit_sha || '')}
-                  className="p-3 bg-[#152232]/60 hover:bg-[#152232] border border-emerald-900/60 rounded-lg cursor-pointer transition flex items-center justify-between"
+                  className="p-3 bg-[#0D1620] hover:bg-slate-900 border-2 border-emerald-900/80 rounded-sm cursor-pointer transition flex items-center justify-between shadow-[2px_2px_0px_0px_#000]"
                 >
                   <div className="truncate mr-2">
                     <span className="text-[11px] font-mono text-emerald-400 font-bold block">

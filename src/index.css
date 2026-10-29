@@ -5,8 +5,8 @@
     --color-sovereign-green: #006A4E;
     --color-flag-crimson: #F42A41;
     --color-bronze-gold: #B8860B;
-    --color-slate-900: #0B131B;
-    --color-slate-800: #152232;
+    --color-slate-900: #070D12;
+    --color-slate-800: #0D1620;
     --color-slate-100: #F1F5F9;
     --color-emerald-success: #059669;
     --color-amber-warning: #D97706;
@@ -18,7 +18,7 @@
   }
 
   body {
-    background-color: #0B131B;
+    background-color: #070D12;
     color: #F1F5F9;
     overflow-x: hidden;
   }
@@ -26,15 +26,15 @@
 
 /* Custom scrollbar styling for high-density policy reading */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0B131B;
+  background: #070D12;
 }
 ::-webkit-scrollbar-thumb {
   background: #1e293b;
-  border-radius: 4px;
+  border-radius: 0px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #006A4E;

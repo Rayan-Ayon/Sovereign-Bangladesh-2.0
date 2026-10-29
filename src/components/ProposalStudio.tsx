@@ -144,18 +144,18 @@ export const ProposalStudio: React.FC<ProposalStudioProps> = ({
   if (submittedProposalId) {
     return (
       <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
-        <div className="bg-[#152232] border border-[#006A4E] rounded-xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+        <div className="bg-[#0D1620] border-2 border-[#006A4E] rounded-sm p-6 sm:p-8 shadow-[6px_6px_0px_0px_#000] relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#006A4E] via-[#B8860B] to-[#059669]" />
 
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-14 h-14 rounded-full bg-[#006A4E]/20 border border-[#006A4E] flex items-center justify-center text-[#34D399] shrink-0">
-              <CheckCircle2 className="w-8 h-8" />
+            <div className="w-12 h-12 rounded-sm bg-[#006A4E]/20 border-2 border-[#006A4E] flex items-center justify-center text-[#34D399] shrink-0">
+              <CheckCircle2 className="w-7 h-7" />
             </div>
             <div>
               <span className="text-[11px] uppercase tracking-widest font-mono text-[#B8860B] font-bold">
                 PR Committed • SHA-256 Ingested
               </span>
-              <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
                 {t.success_title}
               </h2>
             </div>
@@ -311,7 +311,7 @@ export const ProposalStudio: React.FC<ProposalStudioProps> = ({
       )}
 
       {/* Form Card */}
-      <div className="bg-[#152232] rounded-xl border border-slate-800 shadow-xl overflow-hidden">
+      <div className="bg-[#0D1620] rounded-sm border-2 border-slate-800 shadow-[4px_4px_0px_0px_#000] overflow-hidden">
         <form onSubmit={handleSubmit} noValidate>
           <div className="p-6 sm:p-8 space-y-6">
             

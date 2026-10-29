@@ -80,10 +80,10 @@ export const MasterBlueprintViewer: React.FC<MasterBlueprintViewerProps> = ({
                 <div
                   key={c.sha}
                   onClick={() => setSelectedSha(c.sha)}
-                  className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+                  className={`p-3.5 rounded-sm border-2 transition-all cursor-pointer ${
                     isSelected
-                      ? 'bg-[#152232] border-[#006A4E] ring-1 ring-[#006A4E] shadow-md'
-                      : 'bg-[#152232]/60 hover:bg-[#152232] border-slate-800 hover:border-slate-700'
+                      ? 'bg-[#0D1620] border-[#006A4E] shadow-[3px_3px_0px_0px_#006A4E]'
+                      : 'bg-[#0D1620] hover:bg-slate-900 border-slate-800 shadow-[2px_2px_0px_0px_#000]'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1.5 font-mono text-[11px]">
@@ -100,11 +100,11 @@ export const MasterBlueprintViewer: React.FC<MasterBlueprintViewerProps> = ({
                     {c.message}
                   </p>
 
-                  <div className="mt-2.5 pt-2 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono">
+                  <div className="mt-2.5 pt-2 border-t border-slate-800 flex items-center justify-between text-[10px] font-mono">
                     <span className="text-slate-400 truncate max-w-[150px]">
                       {c.section}
                     </span>
-                    <span className="flex items-center gap-1.5">
+                    <span className="flex items-center gap-1.5 font-bold">
                       <span className="text-[#34D399]">+{c.lines_added}</span>
                       <span className="text-[#F42A41]">-{c.lines_removed}</span>
                     </span>
@@ -118,56 +118,56 @@ export const MasterBlueprintViewer: React.FC<MasterBlueprintViewerProps> = ({
         {/* Right: Code Directive & Markdown Spec Viewer (col-span-8) */}
         <div className="lg:col-span-8">
           {activeCommit ? (
-            <div className="bg-[#152232] border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+            <div className="bg-[#0D1620] border-2 border-slate-800 rounded-sm overflow-hidden shadow-[4px_4px_0px_0px_#000]">
               {/* Commit Meta Strip */}
-              <div className="bg-[#0B131B] p-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
+              <div className="bg-[#070D12] p-4 border-b-2 border-slate-800 flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
                 <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 rounded bg-emerald-950 border border-emerald-700 text-emerald-300 font-bold flex items-center gap-1">
+                  <span className="px-2 py-0.5 rounded-sm bg-emerald-950/80 border border-emerald-600 text-emerald-300 font-bold flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" /> Ratified
                   </span>
                   <span className="text-slate-200 font-bold">SHA: {activeCommit.sha}</span>
                   <button
                     onClick={() => handleCopySha(activeCommit.sha)}
-                    className="p-1 hover:bg-slate-800 rounded text-slate-400 hover:text-white"
+                    className="p-1 hover:bg-slate-800 rounded-sm text-slate-400 hover:text-white border border-transparent hover:border-slate-700 transition"
                     title="Copy SHA"
                   >
                     <Copy className="w-3.5 h-3.5" />
                   </button>
-                  {copied && <span className="text-[10px] text-[#34D399]">Copied</span>}
+                  {copied && <span className="text-[10px] text-[#34D399] font-bold">Copied</span>}
                 </div>
 
                 <div className="text-slate-400">
-                  Author: <span className="text-slate-200">{activeCommit.author}</span>
+                  Author: <span className="text-slate-200 font-bold">{activeCommit.author}</span>
                 </div>
               </div>
 
               {/* Directive Section Header */}
-              <div className="p-6 border-b border-slate-800/80 bg-slate-900/40">
+              <div className="p-6 border-b-2 border-slate-800 bg-[#0B131B]">
                 <span className="text-xs font-mono uppercase tracking-wider text-[#B8860B] font-bold block mb-1">
                   {activeCommit.section}
                 </span>
-                <h2 className="text-lg font-bold text-white">
+                <h2 className="text-lg font-bold text-white font-mono">
                   {activeCommit.message}
                 </h2>
               </div>
 
               {/* Spec Document Body (Rendered Markdown Style) */}
               <div className="p-6 text-slate-200 font-sans leading-relaxed text-xs sm:text-sm space-y-4">
-                <div className="bg-[#0B131B] border border-slate-800 rounded-lg p-5 font-mono text-xs whitespace-pre-line leading-relaxed text-slate-300 overflow-x-auto">
+                <div className="bg-[#070D12] border-2 border-slate-800 rounded-sm p-5 font-mono text-xs whitespace-pre-line leading-relaxed text-slate-300 overflow-x-auto">
                   {activeCommit.spec_markdown}
                 </div>
 
-                <div className="p-4 rounded-lg bg-[#006A4E]/10 border border-[#006A4E]/30 text-xs text-slate-300 flex items-start gap-3">
+                <div className="p-4 rounded-sm bg-[#006A4E]/15 border-2 border-[#006A4E]/50 text-xs text-slate-300 flex items-start gap-3 shadow-[2px_2px_0px_0px_#000]">
                   <ShieldCheck className="w-5 h-5 text-[#34D399] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-white block mb-0.5">Zero-Tamper Guarantee:</strong>
+                    <strong className="text-white block mb-0.5 font-mono uppercase tracking-wider">Zero-Tamper Guarantee:</strong>
                     This operational directive is signed with the National Assembly root key. Any procedural deviation by bureaucratic agencies constitutes a direct violation of Sovereign Public Order.
                   </div>
                 </div>
               </div>
             </div>
           ) : (
-            <div className="text-center py-16 bg-[#152232] rounded-xl border border-slate-800 text-slate-400 text-xs">
+            <div className="text-center py-16 bg-[#0D1620] rounded-sm border-2 border-slate-800 text-slate-400 text-xs font-mono">
               Select a commit from the history rail to view its ratified directive.
             </div>
           )}
